@@ -1,0 +1,26 @@
+{
+  "auth": "zef:lizmat",
+  "authors": [
+    "Elizabeth Mattijsen"
+  ],
+  "build-depends": [
+  ],
+  "depends": [
+    "Map::Agnostic:ver<0.0.6>:auth<zef:lizmat>"
+  ],
+  "description": "Provide a Map where keys are regular expressions",
+  "license": "Artistic-2.0",
+  "name": "Map::Match",
+  "perl": "6.d",
+  "provides": {
+    "Map::Match": "lib/Map/Match.rakumod"
+  },
+  "resources": [
+  ],
+  "source-url": "https://github.com/lizmat/Map-Match.git",
+  "tags": [
+  ],
+  "test-depends": [
+  ],
+  "version": "0.0.1"
+}

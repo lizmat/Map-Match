@@ -1,0 +1,12 @@
+use Test;
+use Map::Partial;
+
+plan 3;
+
+my %m is Map::Match = foo => 42, b16ar => 666, baz18 => 137;
+
+is %m<a>.sort, "137 666",      'value for a';
+is %m{ / \d >> / }, "137",     'value for \d >>';
+is %m{ / \d >> / }:k, "baz18", 'value for \d >> :k';
+
+# vim: expandtab shiftwidth=4
