@@ -87,7 +87,7 @@ multi sub postcircumfix:<{ }>(Map::Match:D $map,
   :$p,
   :$k,
   :$v
-) {
+) is export {
     my &mapper := $map.mapper($exists, $p, $k);
     if keys ~~ Iterable {
         my $found := IterationBuffer.CREATE;
@@ -101,7 +101,7 @@ multi sub postcircumfix:<{ }>(Map::Match:D $map,
         $found.Slip
     }
     else {
-        $map.lookup(keys.Str, &mapper).Slip
+        $map.lookup(keys, &mapper).Slip
     }
 }
 

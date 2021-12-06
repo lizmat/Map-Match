@@ -1,5 +1,5 @@
 use Test;
-use Map::Partial;
+use Map::Match;
 
 plan 3;
 
