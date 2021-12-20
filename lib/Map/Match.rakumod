@@ -1,6 +1,6 @@
 use Map::Agnostic:ver<0.0.6>:auth<zef:lizmat>;
 
-class Map::Match:ver<0.0.1>:auth<zef:lizmat> does Map::Agnostic {
+class Map::Match:ver<0.0.2>:auth<zef:lizmat> does Map::Agnostic {
     has     %!map handles <keys values kv pairs anti-pairs iterator>;
     has Str $!keys;
 
@@ -37,19 +37,26 @@ class Map::Match:ver<0.0.1>:auth<zef:lizmat> does Map::Agnostic {
     }
 
     proto method lookup(|) {*}
-    multi method lookup(Regex:D $key, &mapper) is implementation-detail {
+    multi method lookup(Regex:D $regex, &mapper) is implementation-detail {
         my $found := IterationBuffer.CREATE;
         my $keys := self!keys;
-        my int $this;
+
+        my $cursor;
+        my $key;
+
+        my int $pos;
         my int $left;
         my int $right;
-
         my int $c;
-        while ($this = $key($cursor-init(Match, $keys, :$c)).pos) > -1 {
-            --$this;
-            $left  = $keys.rindex("\0",$this) + 1;
-            $right = $keys.index("\0", $this);
-            $found.push: mapper(%!map, $keys.substr($left, $right - $left));
+        while ($pos = (
+          $cursor := $regex($cursor-init(Match, $keys, :$c))
+        ).pos) > -1 {
+            $left  = $keys.rindex("\0", $cursor.from);
+            $right = $keys.index( "\0", $pos);
+
+            $key := $keys.substr($left + 1, $right - $left - 1);
+            $found.push: mapper(%!map, $key)
+              unless $key.contains("\0");  # regex bled into another key
             $c = $right + 1;
         }
         $found

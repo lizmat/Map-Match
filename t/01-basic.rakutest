@@ -1,12 +1,15 @@
 use Test;
 use Map::Match;
 
-plan 3;
+plan 5;
 
 my %m is Map::Match = foo => 42, b16ar => 666, baz18 => 137;
 
 is %m<a>.sort, "137 666",      'value for a';
 is %m{ / \d >> / }, "137",     'value for \d >>';
 is %m{ / \d >> / }:k, "baz18", 'value for \d >> :k';
+is %m{ / z.8 / }, "137",       'value for z.8';
+
+is-deeply %m{ / r.b / }, Empty, 'does r.b bleed into "b16ar\0baz18"';
 
 # vim: expandtab shiftwidth=4

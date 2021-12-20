@@ -2,5 +2,8 @@ Revision history for Map-Match
 
 {{$NEXT}}
 
+0.0.2  2021-12-20T13:14:42+01:00
+    - Fix regexes bleeding into different keys
+
 0.0.1  2021-12-06T13:51:07+01:00
     - Initial version
