@@ -2,6 +2,10 @@ Revision history for Map-Match
 
 {{$NEXT}}
 
+0.0.3  2022-01-27T14:29:10+01:00
+    - Make string searches always be :ignorecase and :ignoremark
+    - Update copyright year
+
 0.0.2  2021-12-20T13:14:42+01:00
     - Fix regexes bleeding into different keys
 

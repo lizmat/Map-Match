@@ -38,7 +38,7 @@ The value returned from any `Map` access is **always** a `Slip`, albeit potentia
 NON-REGEX KEY ASSUMED TO BE REGEX
 ---------------------------------
 
-If you specify a `Str` as a key, or something that can be coerced to a `Str`, it will be interpreted as being interpolated in a `Regex`.
+If you specify a `Str` as a key, or something that can be coerced to a `Str`, it will be interpreted as being interpolated in a `Regex` with `:ignorecase` and `:ignoremark` enabled.
 
 AUTHOR
 ======
@@ -50,7 +50,7 @@ Source can be located at: https://github.com/lizmat/Map-Match . Comments and Pul
 COPYRIGHT AND LICENSE
 =====================
 
-Copyright 2021 Elizabeth Mattijsen
+Copyright 2021, 2022 Elizabeth Mattijsen
 
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 

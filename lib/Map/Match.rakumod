@@ -1,6 +1,6 @@
 use Map::Agnostic:ver<0.0.6>:auth<zef:lizmat>;
 
-class Map::Match:ver<0.0.2>:auth<zef:lizmat> does Map::Agnostic {
+class Map::Match:ver<0.0.3>:auth<zef:lizmat> does Map::Agnostic {
     has     %!map handles <keys values kv pairs anti-pairs iterator>;
     has Str $!keys;
 
@@ -68,7 +68,7 @@ class Map::Match:ver<0.0.2>:auth<zef:lizmat> does Map::Agnostic {
         my int $right;
 
         my int $index;
-        while $keys.index($key,$index) -> int $this {  # cannot be 0
+        while $keys.index($key, $index, :i, :m) -> int $this { # cannot be 0
             $left  = $keys.rindex("\0",$this) + 1;
             $right = $keys.index("\0", $this);
             $found.push: mapper(%!map, $keys.substr($left, $right - $left));
@@ -155,7 +155,8 @@ be returned when specifying a key that does not exist in the C<Map>.
 =head2 NON-REGEX KEY ASSUMED TO BE REGEX
 
 If you specify a C<Str> as a key, or something that can be coerced to a C<Str>,
-it will be interpreted as being interpolated in a C<Regex>.
+it will be interpreted as being interpolated in a C<Regex> with C<:ignorecase>
+and C<:ignoremark> enabled.
 
 =head1 AUTHOR
 
@@ -166,7 +167,7 @@ Pull Requests are welcome.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2021 Elizabeth Mattijsen
+Copyright 2021, 2022 Elizabeth Mattijsen
 
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 
