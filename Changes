@@ -2,6 +2,11 @@ Revision history for Map-Match
 
 {{$NEXT}}
 
+0.0.4  2023-12-19T11:16:21+01:00
+    - Up Map::Agnostic depedency, because we can
+    - Update copyright year
+    - Add sponsor link
+
 0.0.3  2022-01-27T14:29:10+01:00
     - Make string searches always be :ignorecase and :ignoremark
     - Update copyright year

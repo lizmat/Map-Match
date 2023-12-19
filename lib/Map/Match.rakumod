@@ -1,6 +1,6 @@
-use Map::Agnostic:ver<0.0.6>:auth<zef:lizmat>;
+use Map::Agnostic:ver<0.0.7>:auth<zef:lizmat>;
 
-class Map::Match:ver<0.0.3>:auth<zef:lizmat> does Map::Agnostic {
+class Map::Match does Map::Agnostic {
     has     %!map handles <keys values kv pairs anti-pairs iterator>;
     has Str $!keys;
 
@@ -165,9 +165,13 @@ Elizabeth Mattijsen <liz@wenzperl.nl>
 Source can be located at: https://github.com/lizmat/Map-Match . Comments and
 Pull Requests are welcome.
 
+If you like this module, or what I’m doing more generally, committing to a
+L<small sponsorship|https://github.com/sponsors/lizmat/>  would mean a great
+deal to me!
+
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2021, 2022 Elizabeth Mattijsen
+Copyright 2021, 2022, 2023 Elizabeth Mattijsen
 
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 

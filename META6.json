@@ -6,7 +6,7 @@
   "build-depends": [
   ],
   "depends": [
-    "Map::Agnostic:ver<0.0.6>:auth<zef:lizmat>"
+    "Map::Agnostic:ver<0.0.7>:auth<zef:lizmat>"
   ],
   "description": "Provide a Map where keys are regular expressions",
   "license": "Artistic-2.0",
@@ -19,8 +19,10 @@
   ],
   "source-url": "https://github.com/lizmat/Map-Match.git",
   "tags": [
+    "REGEX",
+    "MAP"
   ],
   "test-depends": [
   ],
-  "version": "0.0.3"
+  "version": "0.0.4"
 }
