@@ -1,4 +1,4 @@
-[![Actions Status](https://github.com/lizmat/Map-Match/workflows/test/badge.svg)](https://github.com/lizmat/Map-Match/actions)
+[![Actions Status](https://github.com/lizmat/Map-Match/actions/workflows/linux.yml/badge.svg)](https://github.com/lizmat/Map-Match/actions) [![Actions Status](https://github.com/lizmat/Map-Match/actions/workflows/macos.yml/badge.svg)](https://github.com/lizmat/Map-Match/actions) [![Actions Status](https://github.com/lizmat/Map-Match/actions/workflows/windows.yml/badge.svg)](https://github.com/lizmat/Map-Match/actions)
 
 NAME
 ====
@@ -43,7 +43,7 @@ If you specify a `Str` as a key, or something that can be coerced to a `Str`, it
 AUTHOR
 ======
 
-Elizabeth Mattijsen <liz@wenzperl.nl>
+Elizabeth Mattijsen <liz@raku.rocks>
 
 Source can be located at: https://github.com/lizmat/Map-Match . Comments and Pull Requests are welcome.
 
@@ -52,7 +52,7 @@ If you like this module, or what I’m doing more generally, committing to a [sm
 COPYRIGHT AND LICENSE
 =====================
 
-Copyright 2021, 2022, 2023 Elizabeth Mattijsen
+Copyright 2021, 2022, 2023, 2024 Elizabeth Mattijsen
 
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 

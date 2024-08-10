@@ -1,7 +1,7 @@
 use Test;
 use Map::Match;
 
-plan 8;
+plan 11;
 
 my %m is Map::Match = foo => 42, b16ar => 666, baz18 => 137;
 
@@ -13,5 +13,9 @@ is %m{ / \d >> / }:k, "baz18", 'value for \d >> :k';
 is %m{ / z.8 / }, "137",       'value for z.8';
 
 is-deeply %m{ / r.b / }, Empty, 'does r.b bleed into "b16ar\0baz18"';
+
+is-deeply Map::Match.raku, 'Map::Match', 'does .raku work on type object';
+quietly is-deeply Map::Match.Str, '',       'does .Str  work on type object';
+is-deeply Map::Match.gist, '(Match)',    'does .gist work on type object';
 
 # vim: expandtab shiftwidth=4

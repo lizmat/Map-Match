@@ -2,6 +2,14 @@ Revision history for Map-Match
 
 {{$NEXT}}
 
+0.0.5  2024-08-10T13:40:59+02:00
+    - Up dependency on Map::Agnostic to fix issue with calling
+      .gist / .Str / .raku on type objects
+    - Add sponsor button
+    - Add CI badge for each OS
+    - Update email address
+    - Update copyright year
+
 0.0.4  2023-12-19T11:16:21+01:00
     - Up Map::Agnostic depedency, because we can
     - Update copyright year

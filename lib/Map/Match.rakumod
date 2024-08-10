@@ -1,4 +1,4 @@
-use Map::Agnostic:ver<0.0.7>:auth<zef:lizmat>;
+use Map::Agnostic:ver<0.0.10>:auth<zef:lizmat>;
 
 class Map::Match does Map::Agnostic {
     has     %!map handles <keys values kv pairs anti-pairs iterator>;
@@ -160,7 +160,7 @@ and C<:ignoremark> enabled.
 
 =head1 AUTHOR
 
-Elizabeth Mattijsen <liz@wenzperl.nl>
+Elizabeth Mattijsen <liz@raku.rocks>
 
 Source can be located at: https://github.com/lizmat/Map-Match . Comments and
 Pull Requests are welcome.
@@ -171,7 +171,7 @@ deal to me!
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2021, 2022, 2023 Elizabeth Mattijsen
+Copyright 2021, 2022, 2023, 2024 Elizabeth Mattijsen
 
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 
