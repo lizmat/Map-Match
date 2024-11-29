@@ -37,9 +37,27 @@ class Map::Match does Map::Agnostic {
     }
 
     proto method lookup(|) {*}
-    multi method lookup(Regex:D $regex, &mapper) is implementation-detail {
+    multi method lookup(Regex:D $finder, &mapper) is implementation-detail {
+
+        # Hack to spot usage of ^ and $ anchors in the regex.  If found,
+        # remove them and use adapted regex for initial search, and then
+        # verify
+        my $string  = $finder.gist;
+        my $verify = False;
+        if $string.contains('^') {
+            $string .= subst('^');
+            $verify = True;
+        }
+        if $string.contains('$') {
+            $string .= subst('$');
+            $verify = True;
+        }
+        my $regex := $verify
+          ?? $string.EVAL
+          !! $finder;
+
         my $found := IterationBuffer.CREATE;
-        my $keys := self!keys;
+        my $keys  := self!keys;
 
         my $cursor;
         my $key;
@@ -55,8 +73,14 @@ class Map::Match does Map::Agnostic {
             $right = $keys.index( "\0", $pos);
 
             $key := $keys.substr($left + 1, $right - $left - 1);
-            $found.push: mapper(%!map, $key)
-              unless $key.contains("\0");  # regex bled into another key
+
+            unless $key.contains("\0") {  # did not bleed into another key
+
+                # add key, possibly after verification
+                $found.push: mapper(%!map, $key)
+                  unless $verify && !$key.contains($finder);
+            }
+
             $c = $right + 1;
         }
         $found
@@ -111,70 +135,5 @@ multi sub postcircumfix:<{ }>(Map::Match:D $map,
         $map.lookup(keys, &mapper).Slip
     }
 }
-
-=begin pod
-
-=head1 NAME
-
-Map::Match - Provide a Map where keys are regular expressions
-
-=head1 SYNOPSIS
-
-=begin code :lang<raku>
-
-use Map::Match;
-
-my %m is Map::Match = foo => 42, b16ar => 666, baz18 => 137;
-
-.say for %m<a>;  # 666␤137␤, same as / a /
-
-.say for %m{ / \d >> / };    # 137␤
-
-.say for %m{ / \d >> / }:k;  # baz18␤
-
-=end code
-
-=head1 DESCRIPTION
-
-Map::Match provides an implementation of the C<Map> interface where key values
-are interpreted as regular expressions.  This has the following implications
-with regards to the normal behaviour of C<Map>s:
-
-=head2 CAN RETURN MORE THAN ONE
-
-Since a regular expression can match multiple times, you can receive more than
-one value back from a single key.  Therefore, a C<Slip> will always be returned
-as the value.
-
-=head2 ALWAYS A SLIP
-
-The value returned from any C<Map> access is B<always> a C<Slip>, albeit
-potentially empty.  This is different from a normal C<Map> where C<Nil> would
-be returned when specifying a key that does not exist in the C<Map>.
-
-=head2 NON-REGEX KEY ASSUMED TO BE REGEX
-
-If you specify a C<Str> as a key, or something that can be coerced to a C<Str>,
-it will be interpreted as being interpolated in a C<Regex> with C<:ignorecase>
-and C<:ignoremark> enabled.
-
-=head1 AUTHOR
-
-Elizabeth Mattijsen <liz@raku.rocks>
-
-Source can be located at: https://github.com/lizmat/Map-Match . Comments and
-Pull Requests are welcome.
-
-If you like this module, or what I’m doing more generally, committing to a
-L<small sponsorship|https://github.com/sponsors/lizmat/>  would mean a great
-deal to me!
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright 2021, 2022, 2023, 2024 Elizabeth Mattijsen
-
-This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
-
-=end pod
 
 # vim: expandtab shiftwidth=4

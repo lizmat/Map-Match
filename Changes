@@ -2,25 +2,29 @@ Revision history for Map-Match
 
 {{$NEXT}}
 
+0.0.6  2024-11-29T15:39:36+01:00
+    - Added support for ^ and $ anchors
+    - Moved documentation to a separate file
+
 0.0.5  2024-08-10T13:40:59+02:00
-    - Up dependency on Map::Agnostic to fix issue with calling
+    - Upped dependency on Map::Agnostic to fix issue with calling
       .gist / .Str / .raku on type objects
-    - Add sponsor button
-    - Add CI badge for each OS
-    - Update email address
-    - Update copyright year
+    - Added sponsor button
+    - Added CI badge for each OS
+    - Updated email address
+    - Updated copyright year
 
 0.0.4  2023-12-19T11:16:21+01:00
-    - Up Map::Agnostic depedency, because we can
-    - Update copyright year
-    - Add sponsor link
+    - Upped Map::Agnostic dependency, because we can
+    - Updated copyright year
+    - Added sponsor link
 
 0.0.3  2022-01-27T14:29:10+01:00
     - Make string searches always be :ignorecase and :ignoremark
-    - Update copyright year
+    - Updated copyright year
 
 0.0.2  2021-12-20T13:14:42+01:00
-    - Fix regexes bleeding into different keys
+    - Fixed regexes bleeding into different keys
 
 0.0.1  2021-12-06T13:51:07+01:00
     - Initial version
