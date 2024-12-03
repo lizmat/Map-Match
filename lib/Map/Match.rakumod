@@ -110,30 +110,30 @@ class Map::Match does Map::Agnostic {
     proto method EXISTS-KEY(|) {*}
     multi method EXISTS-KEY(Regex:D $key) { self!keys.contains($key) }
     multi method EXISTS-KEY(Str()   $key) { self!keys.contains($key) }
+
+    multi method CALL-ME(Map::Match:D:
+      \keys, :$exists, :$p, :$k, :$v
+    ) {
+        my &mapper := self.mapper($exists, $p, $k);
+        if keys ~~ Iterable {
+            my $found := IterationBuffer.CREATE;
+            my $iterator := keys.iterator;
+            my $key;
+
+            until ($key := $iterator.pull-one) =:= IterationEnd {
+                $found.append: self.lookup($key, &mapper)
+            }
+
+            $found.Slip
+        }
+        else {
+            self.lookup(keys, &mapper).Slip
+        }
+    }
 }
 
-multi sub postcircumfix:<{ }>(Map::Match:D $map,
-  \keys,
-  :$exists,
-  :$p,
-  :$k,
-  :$v
-) is export {
-    my &mapper := $map.mapper($exists, $p, $k);
-    if keys ~~ Iterable {
-        my $found := IterationBuffer.CREATE;
-        my $iterator := keys.iterator;
-        my $key;
-
-        until ($key := $iterator.pull-one) =:= IterationEnd {
-            $found.append: $map.lookup($key, &mapper)
-        }
-
-        $found.Slip
-    }
-    else {
-        $map.lookup(keys, &mapper).Slip
-    }
+multi sub postcircumfix:<{ }>(Map::Match:D $map, \keys, *%_) is export {
+    $map.CALL-ME(keys, |%_)
 }
 
 # vim: expandtab shiftwidth=4

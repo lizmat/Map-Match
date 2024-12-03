@@ -18,6 +18,8 @@ my %m is Map::Match = foo => 42, b16ar => 666, baz18 => 137;
 .say for %m{ / \d >> / };    # 137␤
 
 .say for %m{ / \d >> / }:k;  # baz18␤
+
+.say for %m( / \d >> /, :k);  # baz18␤
 ```
 
 DESCRIPTION
@@ -39,6 +41,23 @@ NON-REGEX KEY ASSUMED TO BE REGEX
 ---------------------------------
 
 If you specify a `Str` as a key, or something that can be coerced to a `Str`, it will be interpreted as being interpolated in a `Regex` with `:ignorecase` and `:ignoremark` enabled.
+
+CAVEATS
+-------
+
+This module exports a `postcircumfix { }` candidate that allows access to a `Map::Match` object just like an ordinary `Hash` or `Map`. However, if `Map::Match` is used in a module, and that module returns a `Map::Match` object, then in that scope, that `postcircumfix { }` candidate won't be known, causing `{"foo"}` using the standard semantics, producing weird results.
+
+For that situation, you can use the alternate interface, which is to directly call the `Map::Match` object with the desired arguments:
+
+```raku
+# postcircumfix interface
+.say for %m{ / \d >> / }:k;  # baz18␤
+
+# alternate interface
+.say for %m( / \d >> /, :k);  # baz18␤
+```
+
+Of course, it is always an option to always use the alternate interface to prevent confusion, and potential bugs when refactoring code. And the direct interface is actually a bit faster, as it has one less level of indirection.
 
 AUTHOR
 ======

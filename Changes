@@ -2,6 +2,11 @@ Revision history for Map-Match
 
 {{$NEXT}}
 
+0.0.7  2024-12-03T12:30:04+01:00
+    - Added support for directly calling the Map::Match object
+      to allow for easier access to Map::Match features if Map::Match
+      itself is not directly in scope
+
 0.0.6  2024-11-29T15:39:36+01:00
     - Added support for ^ and $ anchors
     - Moved documentation to a separate file

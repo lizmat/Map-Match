@@ -1,12 +1,13 @@
 use Test;
 use Map::Match;
 
-plan 14;
+plan 18;
 
 my %m is Map::Match = foo => 42, b16ar => 666, baz18 => 137;
 
 for <a A ä Á> -> $letter {
     is %m{$letter}.sort, "137 666", "value for $letter";
+    is %m($letter, :p).sort, "b16ar\t666 baz18\t137", "value:p for $letter";
 }
 is %m{ / \d >> / }, "137",     'value for \d >>';
 is %m{ / \d >> / }:k, "baz18", 'value for \d >> :k';

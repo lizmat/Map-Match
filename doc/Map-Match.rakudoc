@@ -18,6 +18,8 @@ my %m is Map::Match = foo => 42, b16ar => 666, baz18 => 137;
 
 .say for %m{ / \d >> / }:k;  # baz18␤
 
+.say for %m( / \d >> /, :k);  # baz18␤
+
 =end code
 
 =head1 DESCRIPTION
@@ -43,6 +45,32 @@ be returned when specifying a key that does not exist in the C<Map>.
 If you specify a C<Str> as a key, or something that can be coerced to a C<Str>,
 it will be interpreted as being interpolated in a C<Regex> with C<:ignorecase>
 and C<:ignoremark> enabled.
+
+=head2 CAVEATS
+
+This module exports a C<postcircumfix { }> candidate that allows access
+to a C<Map::Match> object just like an ordinary C<Hash> or C<Map>.  However,
+if C<Map::Match> is used in a module, and that module returns a C<Map::Match>
+object, then in that scope, that C<postcircumfix { }> candidate won't be
+known, causing C<{"foo"}> using the standard semantics, producing weird
+results.
+
+For that situation, you can use the alternate interface, which is to directly
+call the C<Map::Match> object with the desired arguments:
+
+=begin code :lang<raku>
+
+# postcircumfix interface
+.say for %m{ / \d >> / }:k;  # baz18␤
+
+# alternate interface
+.say for %m( / \d >> /, :k);  # baz18␤
+
+=end code
+
+Of course, it is always an option to always use the alternate interface to
+prevent confusion, and potential bugs when refactoring code.  And the direct
+interface is actually a bit faster, as it has one less level of indirection.
 
 =head1 AUTHOR
 
