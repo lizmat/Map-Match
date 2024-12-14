@@ -2,6 +2,12 @@ Revision history for Map-Match
 
 {{$NEXT}}
 
+0.0.8  2024-12-14T19:31:17+01:00
+    - Use a better way to handle ^ and $ anchors: since keys are
+      null byte delimited, and thus are at a word boundary, it is
+      easier to just use << for ^ and >> for $ without needing any
+      additional checks
+
 0.0.7  2024-12-03T12:30:04+01:00
     - Added support for directly calling the Map::Match object
       to allow for easier access to Map::Match features if Map::Match

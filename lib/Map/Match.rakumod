@@ -42,19 +42,17 @@ class Map::Match does Map::Agnostic {
         # Hack to spot usage of ^ and $ anchors in the regex.  If found,
         # remove them and use adapted regex for initial search, and then
         # verify
-        my $string  = $finder.gist;
-        my $verify = False;
+        my $string = $finder.gist;
+        my $eval   = False;
         if $string.contains('^') {
-            $string .= subst('^');
-            $verify = True;
+            $string .= subst('^', '<<');
+            $eval    = True;
         }
         if $string.contains('$') {
-            $string .= subst('$');
-            $verify = True;
+            $string .= subst('$', '>>');
+            $eval    = True;
         }
-        my $regex := $verify
-          ?? $string.EVAL
-          !! $finder;
+        my $regex := $eval ?? $string.EVAL !! $finder;
 
         my $found := IterationBuffer.CREATE;
         my $keys  := self!keys;
@@ -75,10 +73,7 @@ class Map::Match does Map::Agnostic {
             $key := $keys.substr($left + 1, $right - $left - 1);
 
             unless $key.contains("\0") {  # did not bleed into another key
-
-                # add key, possibly after verification
-                $found.push: mapper(%!map, $key)
-                  unless $verify && !$key.contains($finder);
+                $found.push: mapper(%!map, $key);
             }
 
             $c = $right + 1;
