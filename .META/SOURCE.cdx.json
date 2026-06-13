@@ -4,7 +4,7 @@
   "specVersion": "1.6",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-06-13T15:11:41+00:00",
+    "timestamp": "2026-06-13T16:53:51+00:00",
     "lifecycles": [
       {
         "phase": "pre-build"
@@ -19,7 +19,7 @@
     "component": {
       "type": "library",
       "mime-type": "text/plain",
-      "bom-ref": "pkg:raku/zef:lizmat/Map::Match@0.0.9",
+      "bom-ref": "pkg:raku/zef:lizmat/Map::Match@0.0.10",
       "authors": [
         {
           "bom-ref": "ElizabethMattijsen",
@@ -29,7 +29,7 @@
       "publisher": "zef",
       "group": "zef:lizmat",
       "name": "Map::Match",
-      "version": "0.0.9",
+      "version": "0.0.10",
       "description": "Provide a Map where keys are regular expressions",
       "scope": "required",
       "licenses": [
@@ -41,14 +41,14 @@
           }
         }
       ],
-      "purl": "pkg:raku/zef:lizmat/Map::Match@0.0.9",
+      "purl": "pkg:raku/zef:lizmat/Map::Match@0.0.10",
       "externalReferences": [
         {
           "url": "https://codeberg.org/lizmat/Map-Match",
           "type": "distribution"
         },
         {
-          "url": "https://raku.land/zef:lizmat/Map::Match?v=0.0.9",
+          "url": "https://raku.land/zef:lizmat/Map::Match?v=0.0.10",
           "type": "documentation"
         },
         {
@@ -234,7 +234,7 @@
     {
       "type": "library",
       "mime-type": "text/plain",
-      "bom-ref": "pkg:raku/zef:lizmat/Hash::Agnostic?vers=vers:raku/%3E=0.0.19",
+      "bom-ref": "pkg:raku/zef:lizmat/Hash::Agnostic?vers=vers:raku/%3E=0.0.20",
       "authors": [
         {
           "bom-ref": "ElizabethMattijsen",
@@ -244,7 +244,7 @@
       "publisher": "zef",
       "group": "zef:lizmat",
       "name": "Hash::Agnostic",
-      "version": "0.0.19",
+      "version": "0.0.20",
       "description": "be a hash without knowing how",
       "scope": "required",
       "licenses": [
@@ -256,27 +256,23 @@
           }
         }
       ],
-      "purl": "pkg:raku/zef:lizmat/Hash::Agnostic@0.0.19",
+      "purl": "pkg:raku/zef:lizmat/Hash::Agnostic@0.0.20",
       "externalReferences": [
         {
-          "url": "https://github.com/lizmat/Hash-Agnostic",
+          "url": "https://coeberg.org/lizmat/Hash-Agnostic",
           "type": "distribution"
         },
         {
-          "url": "https://raku.land/zef:lizmat/Hash::Agnostic?v=0.0.19",
+          "url": "https://raku.land/zef:lizmat/Hash::Agnostic?v=0.0.20",
           "type": "documentation"
         },
         {
-          "url": "https://github.com/lizmat/Hash-Agnostic/issues",
+          "url": "https://codeberg.org/lizmat/Hash-Agnostic/issues",
           "type": "issue-tracker"
         },
         {
           "url": "https://spdx.org/licenses/Artistic-2.0.json",
           "type": "license"
-        },
-        {
-          "url": "https://github.com/lizmat/Hash-Agnostic/archive/refs/tags/0.0.19.zip",
-          "type": "source-distribution"
         },
         {
           "url": "mailto:liz@raku.rocks",
@@ -285,13 +281,14 @@
       ],
       "tags": [
         "HASH",
-        "UTILS"
+        "UTILS",
+        "ROLE"
       ]
     },
     {
       "type": "library",
       "mime-type": "text/plain",
-      "bom-ref": "pkg:raku/zef:lizmat/Map::Agnostic?vers=vers:raku/%3E=0.0.12",
+      "bom-ref": "pkg:raku/zef:lizmat/Map::Agnostic?vers=vers:raku/%3E=0.0.13",
       "authors": [
         {
           "bom-ref": "ElizabethMattijsen",
@@ -301,7 +298,7 @@
       "publisher": "zef",
       "group": "zef:lizmat",
       "name": "Map::Agnostic",
-      "version": "0.0.12",
+      "version": "0.0.13",
       "description": "be a Map without knowing how",
       "scope": "required",
       "licenses": [
@@ -313,14 +310,14 @@
           }
         }
       ],
-      "purl": "pkg:raku/zef:lizmat/Map::Agnostic@0.0.12",
+      "purl": "pkg:raku/zef:lizmat/Map::Agnostic@0.0.13",
       "externalReferences": [
         {
           "url": "https://github.com/lizmat/Map-Agnostic",
           "type": "distribution"
         },
         {
-          "url": "https://raku.land/zef:lizmat/Map::Agnostic?v=0.0.12",
+          "url": "https://raku.land/zef:lizmat/Map::Agnostic?v=0.0.13",
           "type": "documentation"
         },
         {
@@ -332,7 +329,7 @@
           "type": "license"
         },
         {
-          "url": "https://github.com/lizmat/Map-Agnostic/archive/refs/tags/0.0.12.zip",
+          "url": "https://github.com/lizmat/Map-Agnostic/archive/refs/tags/0.0.13.zip",
           "type": "source-distribution"
         },
         {
@@ -352,7 +349,7 @@
       "type": "distribution"
     },
     {
-      "url": "https://raku.land/zef:lizmat/Map::Match?v=0.0.9",
+      "url": "https://raku.land/zef:lizmat/Map::Match?v=0.0.10",
       "type": "documentation"
     },
     {
@@ -376,9 +373,9 @@
       ]
     },
     {
-      "ref": "pkg:raku/zef:lizmat/Map::Agnostic?vers=vers:raku/%3E=0.0.12",
+      "ref": "pkg:raku/zef:lizmat/Map::Agnostic?vers=vers:raku/%3E=0.0.13",
       "dependsOn": [
-        "pkg:raku/zef:lizmat/Hash::Agnostic?vers=vers:raku/%3E=0.0.19"
+        "pkg:raku/zef:lizmat/Hash::Agnostic?vers=vers:raku/%3E=0.0.20"
       ]
     },
     {

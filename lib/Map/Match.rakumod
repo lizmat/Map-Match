@@ -1,4 +1,4 @@
-use Map::Agnostic:ver<0.0.12+>:auth<zef:lizmat>;
+use Map::Agnostic:ver<0.0.13+>:auth<zef:lizmat>;
 
 class Map::Match does Map::Agnostic {
     has     %!map handles <keys values kv pairs anti-pairs iterator>;
