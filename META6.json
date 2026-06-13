@@ -3,6 +3,8 @@
   "authors": [
     "Elizabeth Mattijsen"
   ],
+  "build-depends": [
+  ],
   "depends": {
     "runtime": {
       "requires": [
@@ -17,6 +19,9 @@
     "Map::Match": "lib/Map/Match.rakumod"
   },
   "raku": "6.d",
+  "resources": [
+  ],
+  "source-url": "https://codeberg.org/lizmat/Map-Match.git",
   "support": {
     "bugtracker": "https://codeberg.org/lizmat/Map-Match/issues",
     "email": "liz@raku.rocks",
@@ -27,5 +32,7 @@
     "MAP",
     "MATCH"
   ],
-  "version": "0.0.8"
+  "test-depends": [
+  ],
+  "version": "0.0.9"
 }
