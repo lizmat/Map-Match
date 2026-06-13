@@ -3,6 +3,7 @@
   "authors": [
     "Elizabeth Mattijsen"
   ],
+  "depends": {
     "runtime": {
       "requires": [
         "Map::Agnostic:ver<0.0.12+>:auth<zef:lizmat>"
