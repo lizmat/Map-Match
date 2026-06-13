@@ -1,4 +1,4 @@
-use Map::Agnostic:ver<0.0.10>:auth<zef:lizmat>;
+use Map::Agnostic:ver<0.0.12+>:auth<zef:lizmat>;
 
 class Map::Match does Map::Agnostic {
     has     %!map handles <keys values kv pairs anti-pairs iterator>;
@@ -76,7 +76,7 @@ class Map::Match does Map::Agnostic {
                 $found.push: mapper(%!map, $key);
             }
 
-            $c = $right + 1;
+            $c = $right + 1;  # UNCOVERABLE
         }
         $found
     }
@@ -91,7 +91,7 @@ class Map::Match does Map::Agnostic {
             $left  = $keys.rindex("\0",$this) + 1;
             $right = $keys.index("\0", $this);
             $found.push: mapper(%!map, $keys.substr($left, $right - $left));
-            $index = $right + 1;
+            $index = $right + 1;  # UNCOVERABLE
         }
         $found
     }

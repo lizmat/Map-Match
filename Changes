@@ -1,6 +1,11 @@
 Revision history for Map-Match
 
 {{$NEXT}}
+    - Migrate repo to Codeberg
+    - Add preliminary coverage testing
+    - Modernize META
+    - Up dependency
+    - Update copyright year
 
 0.0.8  2024-12-14T19:31:17+01:00
     - Use a better way to handle ^ and $ anchors: since keys are

@@ -7,7 +7,6 @@ Map::Match - Provide a Map where keys are regular expressions
 =head1 SYNOPSIS
 
 =begin code :lang<raku>
-
 use Map::Match;
 
 my %m is Map::Match = foo => 42, b16ar => 666, baz18 => 137;
@@ -19,7 +18,6 @@ my %m is Map::Match = foo => 42, b16ar => 666, baz18 => 137;
 .say for %m{ / \d >> / }:k;  # baz18␤
 
 .say for %m( / \d >> /, :k);  # baz18␤
-
 =end code
 
 =head1 DESCRIPTION
@@ -59,13 +57,11 @@ For that situation, you can use the alternate interface, which is to directly
 call the C<Map::Match> object with the desired arguments:
 
 =begin code :lang<raku>
-
 # postcircumfix interface
 .say for %m{ / \d >> / }:k;  # baz18␤
 
 # alternate interface
 .say for %m( / \d >> /, :k);  # baz18␤
-
 =end code
 
 Of course, it is always an option to always use the alternate interface to
@@ -76,7 +72,7 @@ interface is actually a bit faster, as it has one less level of indirection.
 
 Elizabeth Mattijsen <liz@raku.rocks>
 
-Source can be located at: https://github.com/lizmat/Map-Match . Comments and
+Source can be located at: https://codeberg.org/lizmat/Map-Match . Comments and
 Pull Requests are welcome.
 
 If you like this module, or what I’m doing more generally, committing to a
@@ -85,7 +81,7 @@ deal to me!
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2021, 2022, 2023, 2024 Elizabeth Mattijsen
+Copyright 2021, 2022, 2023, 2024, 2026 Elizabeth Mattijsen
 
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 

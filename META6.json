@@ -3,26 +3,28 @@
   "authors": [
     "Elizabeth Mattijsen"
   ],
-  "build-depends": [
-  ],
-  "depends": [
-    "Map::Agnostic:ver<0.0.10>:auth<zef:lizmat>"
-  ],
+    "runtime": {
+      "requires": [
+        "Map::Agnostic:ver<0.0.12+>:auth<zef:lizmat>"
+      ]
+    }
+  },
   "description": "Provide a Map where keys are regular expressions",
   "license": "Artistic-2.0",
   "name": "Map::Match",
-  "perl": "6.d",
   "provides": {
     "Map::Match": "lib/Map/Match.rakumod"
   },
-  "resources": [
-  ],
-  "source-url": "https://github.com/lizmat/Map-Match.git",
+  "raku": "6.d",
+  "support": {
+    "bugtracker": "https://codeberg.org/lizmat/Map-Match/issues",
+    "email": "liz@raku.rocks",
+    "source": "https://codeberg.org/lizmat/Map-Match.git"
+  },
   "tags": [
     "REGEX",
-    "MAP"
-  ],
-  "test-depends": [
+    "MAP",
+    "MATCH"
   ],
   "version": "0.0.8"
 }

@@ -1,3 +1,4 @@
 .precomp/
 /Map-Match-*
 /releases/
+*.rakucov
